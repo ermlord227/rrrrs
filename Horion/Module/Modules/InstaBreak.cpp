@@ -2,7 +2,7 @@
 
 
 
-InstaBreak::InstaBreak() : IModule(VK_NUMPAD4, BUILD)
+InstaBreak::InstaBreak() : IModule(VK_NUMPAD4, Category::BUILD, "Break any block instantly")
 {
 }
 

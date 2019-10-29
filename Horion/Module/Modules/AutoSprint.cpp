@@ -1,6 +1,6 @@
 #include "AutoSprint.h"
 
-AutoSprint::AutoSprint() : IModule(0x0, MOVEMENT)
+AutoSprint::AutoSprint() : IModule(0x0, Category::MOVEMENT, "Automatically sprint without holding the key")
 {
 }
 

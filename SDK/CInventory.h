@@ -124,7 +124,7 @@ public:
 	virtual bool isStackedByData(void)const;
 public:
 	virtual __int64 getMaxDamage(void)const;
-	virtual float getAttackDamage(void)const;
+	virtual int getAttackDamage(void)const;
 public:
 	virtual bool isHandEquipped(void)const;
 	virtual bool isArmor(void)const;
@@ -247,6 +247,17 @@ class C_Inventory {
 private:
 	virtual ~C_Inventory();
 public:
+	bool isFull()
+	{
+		int fullslots = 0;
+		for (int i = 0; i < 36; i++)
+		{
+			if (this->getItemStack(i)->item != nullptr)
+				fullslots++;
+		}
+		if (fullslots == 36) return true;
+		return false;
+	}
 	int getFirstEmptySlot()
 	{
 		for (int i = 0; i < 36; i++)

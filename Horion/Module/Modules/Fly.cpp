@@ -2,7 +2,7 @@
 
 
 
-Fly::Fly() : IModule(0x0, MOVEMENT)
+Fly::Fly() : IModule(0x0, Category::MOVEMENT, "Enables fly like in creative mode")
 {
 }
 

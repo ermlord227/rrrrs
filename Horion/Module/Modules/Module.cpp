@@ -2,10 +2,11 @@
 
 
 
-IModule::IModule(int key, Category c)
+IModule::IModule(int key, Category c, const char* tooltip)
 {
 	this->keybind = key;
 	this->category = c;
+	this->tooltip = tooltip;
 	this->registerIntSetting(std::string("keybind"), &this->keybind, this->keybind, 0, 0xFF);
 	this->registerBoolSetting(std::string("enabled"), &this->enabled, false);
 }
@@ -92,6 +93,11 @@ void IModule::registerBoolSetting(std::string name, bool * boolPtr, bool default
 
 IModule::~IModule()
 {
+}
+
+const char* IModule::getModuleName()
+{
+	return "Module";
 }
 
 const char* IModule::getRawModuleName()
@@ -259,4 +265,8 @@ void IModule::toggle()
 bool IModule::isEnabled()
 {
 	return this->enabled;
+}
+
+const char* IModule::getTooltip() {
+	return this->tooltip;
 }

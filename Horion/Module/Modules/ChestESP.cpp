@@ -2,7 +2,7 @@
 
 
 
-ChestESP::ChestESP() : IModule('H', VISUAL)
+ChestESP::ChestESP() : IModule('H', Category::VISUAL, "ESP for chests")
 {
 }
 

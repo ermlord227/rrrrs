@@ -2,7 +2,7 @@
 
 
 
-Jetpack::Jetpack() : IModule('F', MOVEMENT)
+Jetpack::Jetpack() : IModule('F', Category::MOVEMENT, "Fly around like you had a Jetpack!")
 {
 	registerFloatSetting("speed", &this->speedMod, 1, 0.2f, 2.f);
 	this->registerBoolSetting("Bypass", &this->isBypass, this->isBypass);
@@ -34,9 +34,7 @@ void Jetpack::onTick(C_GameMode * gm)
 		moveVec.y = sin(calcPitch)				  * speedMod;
 		moveVec.z = sin(calcYaw) * cos(calcPitch) * speedMod;
 
-		C_GameMode* m = gm;
-		C_Entity* p = m->player;
-		p->lerpMotion(moveVec);
+		gm->player->lerpMotion(moveVec);
 	}
 	else{
 		delay++;
@@ -54,8 +52,8 @@ void Jetpack::onTick(C_GameMode * gm)
 
 			gm->player->velocity.y = 0.465f;
 			vec3_t moveVec;
-			moveVec.x = cos(calcYaw) * cos(calcPitch) * 0.425f;
-			moveVec.z = sin(calcYaw) * cos(calcPitch) * 0.425f;
+			moveVec.x = cos(calcYaw) * cos(calcPitch) * speedMod;
+			moveVec.z = sin(calcYaw) * cos(calcPitch) * speedMod;
 
 			gm->player->velocity.x = moveVec.x;
 			gm->player->velocity.z = moveVec.z;

@@ -71,9 +71,13 @@ void ModuleManager::initModules()
 	this->moduleList.push_back(new MidClick());
 	this->moduleList.push_back(new ClickTP());
 	this->moduleList.push_back(new NoFriends());
+	this->moduleList.push_back(new Spammer());
+	this->moduleList.push_back(new ChestAura());
+	this->moduleList.push_back(new AntiBot());
 	initialized = true;
 
 	this->getModule<HudModule>()->setEnabled(true);
+	this->getModule<ClickGuiMod>()->setEnabled(false);
 }
 
 void ModuleManager::disable()
@@ -150,7 +154,29 @@ void ModuleManager::onPostRender()
 
 std::vector<IModule*>* ModuleManager::getModuleList()
 {
-	return &moduleList;
+	std::vector<IModule*>* sortedList = &moduleList;
+	std::sort(sortedList->begin(), sortedList->end(), [](const IModule* lhs, const IModule* rhs)
+		{
+			IModule* current = const_cast<IModule*>(lhs);
+			IModule* other = const_cast<IModule*>(rhs);
+			return std::string{ *current->getModuleName() } < std::string{ *other->getModuleName() };
+		});
+	return sortedList;
+}
+
+int ModuleManager::getModuleCount()
+{
+	return (int)(&moduleList)->size();
+}
+
+int ModuleManager::getEnabledModuleCount()
+{
+	int i = 0;
+	for (auto it = (&moduleList)->begin(); it != (&moduleList)->end(); ++it) {
+		IModule* mod = *it;
+		if ((*it)->isEnabled()) i++;
+	}
+	return i;
 }
 
 ModuleManager* moduleMgr = new ModuleManager(&g_Data);

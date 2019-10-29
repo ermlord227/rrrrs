@@ -61,6 +61,9 @@
 #include "Modules/MidClick.h"
 #include "Modules/ClickTP.h"
 #include "Modules/NoFriends.h"
+#include "Modules/Spammer.h"
+#include "Modules/ChestAura.h"
+#include "Modules/AntiBot.h"
 #include "../../Utils/Json.hpp"
 
 using json = nlohmann::json;
@@ -84,6 +87,9 @@ public:
 
 	bool isInitialized() { return initialized; };
 	std::vector<IModule*>* getModuleList();
+
+	int getModuleCount();
+	int getEnabledModuleCount();
 
 	/*
 	 *	Use as follows: 
