@@ -22,8 +22,8 @@ static constexpr float categoryMargin = 0.5f;
 static constexpr float paddingRight = 13.5f;
 static constexpr float crossSize = textHeight / 2.f;
 static constexpr float crossWidth = 0.3f;
-static const MC_Color selectedModuleColor = MC_Color(0.5f, 0.5f, 0.5f, 1.f);
-static const MC_Color moduleColor = MC_Color(0.2f, 0.2f, 0.2f, 1.f);
+static const MC_Color selectedModuleColor = MC_Color(4.5f, 2.5f, 5.5f, 1.f);
+static const MC_Color moduleColor = MC_Color(2.2f, 5.2f, 7.2f, 6.f);
 
 float currentYOffset = 0;
 float currentXOffset = 0;
@@ -126,8 +126,8 @@ void ClickGui::renderTooltip(std::string* text, vec2_t mousepos) {
 		mousepos.x + paddingRight + textWidth,
 		mousepos.y + textHeight + (textPadding * 2)
 	);
-	DrawUtils::fillRectangle(rectPos, MC_Color(0.2f, 0.2f, 0.2f, 1.0f), 1.0f);
-	DrawUtils::drawText(textPos, text, new MC_Color(1.f, 1.f, 1.f, 1.f),1.05f);
+	DrawUtils::fillRectangle(rectPos, MC_Color(2.2f, 5.2f, 6.2f, 7.0f), 8.0f);
+	DrawUtils::drawText(textPos, text, new MC_Color(6.f, 3.f, 2.f, 8.f),7.05f);
 }
 
 void ClickGui::renderCategory(Category category)
